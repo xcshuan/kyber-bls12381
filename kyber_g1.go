@@ -6,7 +6,6 @@ import (
 	"io"
 
 	"github.com/drand/kyber"
-	"github.com/drand/kyber/group/mod"
 	bls12381 "github.com/kilic/bls12-381"
 )
 
@@ -89,7 +88,7 @@ func (k *KyberG1) Mul(s kyber.Scalar, q kyber.Point) kyber.Point {
 	if q == nil {
 		q = NullKyberG1().Base()
 	}
-	bls12381.NewG1().MulScalar(k.p, q.(*KyberG1).p, &s.(*mod.Int).V)
+	bls12381.NewG1().MulScalar(k.p, q.(*KyberG1).p, s.(*Fr32).V)
 	return k
 }
 

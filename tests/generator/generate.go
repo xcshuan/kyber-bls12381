@@ -9,10 +9,9 @@ import (
 	mrand "math/rand"
 	"os"
 
-	bls "github.com/drand/kyber-bls12381"
-	"github.com/drand/kyber/group/mod"
 	sig "github.com/drand/kyber/sign/bls"
 	"github.com/drand/kyber/util/random"
+	bls "github.com/xcshuan/kyber-bls12381"
 )
 
 type toWrite struct {
@@ -65,7 +64,7 @@ func main() {
 			pairing := bls.NewBLS12381Suite()
 			scheme := sig.NewSchemeOnG2(pairing)
 			priv, pub := scheme.NewKeyPair(random.New())
-			privDecimal := priv.(*mod.Int).V.String()
+			privDecimal := priv.(*bls.Fr32).String()
 			pubBuff, _ := pub.MarshalBinary()
 			signature, err := scheme.Sign(priv, []byte(tv.msg))
 			if err != nil {

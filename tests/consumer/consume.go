@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"os"
 
-	bls "github.com/drand/kyber-bls12381"
 	sig "github.com/drand/kyber/sign/bls"
+	bls "github.com/xcshuan/kyber-bls12381"
 )
 
 type testVector struct {
@@ -60,4 +60,5 @@ func main() {
 			}
 		}
 	}
+	fmt.Println("Success")
 }
